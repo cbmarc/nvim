@@ -48,6 +48,10 @@ endif
 
 command! -bang -nargs=* Rg call fzf#vim#grep("rg -g '!dist' -g '!node_modules' --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+" Remap LEADER to SPACE
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 " Moving stuff around
 nnoremap <C-j> :m .+1<CR>==
 nnoremap <C-k> :m .-2<CR>==
@@ -65,7 +69,18 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 tnoremap <Esc> <C-\><C-n>
+
+" Remove highlighting after search
 nnoremap <silent> <Esc> :noh<CR>
+
+" Open file search
+nnoremap <silent> <LEADER>fo :Files<CR> 
+
+" Search in files
+nnoremap <silent> <LEADER>ff :Rg<CR>
+
+" Quit, to close windows faster 
+nnoremap <silent> <LEADER>q :q<CR>
 
 set clipboard+=unnamedplus
 
